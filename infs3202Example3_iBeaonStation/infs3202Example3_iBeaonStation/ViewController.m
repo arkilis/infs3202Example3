@@ -51,7 +51,8 @@
                  [aryTemp addObject:dict[@"uuid"]];
                  [aryTemp addObject:dict[@"major"]];
                  [aryTemp addObject:dict[@"minor"]];
-                 [aryTemp addObject:dict[@"url"]];
+                 [aryTemp addObject:dict[@"urlview"]];
+                 [aryTemp addObject:dict[@"urlres"]];
                  [aryTemp addObject:@0];
                  
                  //dictURLs[dict[@"name"]]= aryTemp;
@@ -114,8 +115,12 @@
 }
 
 - (IBAction)btnFresh:(id)sender {
+    
+    NSString *urlName= self.textfieldURL.text;
+    if (![urlName isEqualToString:@""]) {
+    }
     // load url
-    NSURL *url = [NSURL URLWithString:@"https://docs.google.com/spreadsheets/d/1ljYItOgjnQv0H3afrcDDypGmVBTepCZ6Mw4Bb88zPlU"];
+    NSURL *url = [NSURL URLWithString:dictURLs[urlName][4]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.myWebView loadRequest:request];
 }

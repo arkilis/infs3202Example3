@@ -51,7 +51,8 @@
                  [aryTemp addObject:dict[@"uuid"]];
                  [aryTemp addObject:dict[@"major"]];
                  [aryTemp addObject:dict[@"minor"]];
-                 [aryTemp addObject:dict[@"url"]];
+                 [aryTemp addObject:dict[@"urlview"]];
+                 [aryTemp addObject:dict[@"urlres"]];
                  [aryTemp addObject:@0];
                  
                  //dictURLs[dict[@"name"]]= aryTemp;
@@ -94,14 +95,14 @@
             if([[beacon.proximityUUID UUIDString] isEqualToString:dictURLs[key][0]] &&
                [beacon.major isEqual: dictURLs[key][1]] &&
                [beacon.minor isEqual: dictURLs[key][2]] &&
-               [dictURLs[key][4] isEqual:@0] ){
+               [dictURLs[key][5] isEqual:@0] ){
                 
                 NSLog(@"%d", NO);
                 self.labelStatus.text= [NSString stringWithFormat:@"Load iBeacon Station %@", key];
                 NSURL *url= [NSURL URLWithString:dictURLs[key][3]];
                 NSURLRequest *request = [NSURLRequest requestWithURL: url];
                 [self.myWebView loadRequest:request];
-                dictURLs[key][4]=@1;
+                dictURLs[key][5]=@1;
             }
         }
     }
